@@ -39,8 +39,7 @@ class EncapsulationTest {
 	@Test
 	void testMemberObj() {
 		EncapsulateTheData eTD = new EncapsulateTheData();
-		eTD.setMemberObj("Cookies");
-		assertEquals(true, "Cookie" instanceof Object);
+		
 	}
 
 }

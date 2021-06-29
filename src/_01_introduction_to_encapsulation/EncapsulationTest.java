@@ -18,13 +18,12 @@ class EncapsulationTest {
 	@Test
 	void testDegreesTurned() {
 		EncapsulateTheData eTD = new EncapsulateTheData();
-		eTD.setDegreesTurned(-3);
-		assertTrue(eTD.getDegreesTurned() - 357 < 0.0);
-		eTD.setDegreesTurned(30);
-		System.out.println(eTD.getDegreesTurned());
-		assertTrue(eTD.getDegreesTurned() - 30 < 0.0);
-		eTD.setDegreesTurned(380);
-		assertTrue(eTD.getDegreesTurned() - 20 < 0.0);
+		eTD.setDegreesTurned(-3.0f);
+		assertTrue(eTD.getDegreesTurned() - 357.0 <= 0.0);
+		eTD.setDegreesTurned(30.0f);
+		assertTrue(eTD.getDegreesTurned() - 30.0f <= 0.0);
+		eTD.setDegreesTurned(380.0f);
+		assertTrue(eTD.getDegreesTurned() - 20.0f <= 0.0);
 	}
 	
 	@Test
@@ -39,7 +38,8 @@ class EncapsulationTest {
 	@Test
 	void testMemberObj() {
 		EncapsulateTheData eTD = new EncapsulateTheData();
-		
+		eTD.setMemberObj("Cookies");
+		assertFalse(eTD.getMemberObj() instanceof String);
 	}
 
 }

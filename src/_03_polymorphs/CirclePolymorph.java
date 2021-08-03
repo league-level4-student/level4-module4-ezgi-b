@@ -15,12 +15,12 @@ public class CirclePolymorph extends Polymorph{
 	}
 	
 	public void draw(Graphics g) {
-		g.setColor(Color.black);
+		g.setColor(Color.green);
 		g.fillRect(getX(), getY(), getWidth(), getHeight());
 	}
 	
 	public void update() {
-		degrees += 1;
+		degrees += 2;
 		setX((int)(RADIUS * Math.cos(Math.toRadians(degrees))) + centerX);
 		setY((int)(RADIUS * Math.sin(Math.toRadians(degrees))) + centerY);
 		

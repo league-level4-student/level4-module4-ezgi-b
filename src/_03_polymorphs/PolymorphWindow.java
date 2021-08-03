@@ -5,13 +5,16 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-public class PolymorphWindow extends JPanel implements ActionListener{
+public class PolymorphWindow extends JPanel implements ActionListener, MouseMotionListener, MouseListener{
     public static final int WIDTH = 900;
     public static final int HEIGHT = 600;
     
@@ -38,11 +41,18 @@ public class PolymorphWindow extends JPanel implements ActionListener{
    	 		polies.add(new MovingMorph((int)(Math.random() * 400) + 20, (int)(Math.random() * 400) + 20, (int)(Math.random() * 40) + 20, (int)(Math.random() * 40) + 20));
    	 	}
    	 	
-   	 polies.add(new CirclePolymorph(300, 300, 50, 50));
+   	 	polies.add(new CirclePolymorph(300, 300, 50, 50));
+   	 	polies.add(new FollowPolymorph(300, 350, 50, 50));
+   	 	polies.add(new ImagePolymorph(200, 60, 80, 60, "cat.jpg"));
+   	 	polies.add(new ClickPolymorph(300, 60, 80, 60));
+   	 
    	 	
    	 
    	 	timer = new Timer(1000 / 30, this);
    	 	timer.start();
+   	 	
+   	 	window.addMouseMotionListener(this);
+   	 	window.addMouseListener(this);
     }
     
     public void paintComponent(Graphics g){
@@ -63,4 +73,55 @@ public class PolymorphWindow extends JPanel implements ActionListener{
    	 		poly.update();
    	 	}
     }
+
+	@Override
+	public void mouseDragged(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		// TODO Auto-generated method stub
+		repaint();
+    	for(Polymorph poly: polies) {
+   	 		poly.mouseUpdate(e.getX(), e.getY());
+   	 	}
+    	
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		repaint();
+		for(Polymorph poly: polies) {
+   	 		poly.mouseClickUpdate(e.getX(), e.getY());
+   	 	}
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 }

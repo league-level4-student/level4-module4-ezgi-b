@@ -19,6 +19,14 @@ public abstract class Polymorph {
    	 
     }
     
+    public void mouseUpdate(int x, int y) {
+    	
+    }
+    
+    public void mouseClickUpdate(int x, int y) {
+    	
+    }
+    
     public abstract void draw(Graphics g);
     
     public int getX() {
